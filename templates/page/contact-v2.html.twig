@@ -9,8 +9,42 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Formulario V2! ✅</h1>
-         {{form(form)}}
+      <h1 class="text-3xl font-bold underline">
+    Formulario V2! ✅
+  </h1>
+       {{ form_start(form,{
+            'action': 'procesar',
+            'method': 'GET',
+            'attr': {'novalidate': 'novalidate'}
+         }) }}
+        
+                 
+      
+        {{ form_errors(form)}}
+          <div class="flex justify-content">
+            {{ form_row(form.message, {
+                'label': 'Comentario o sugerencia',
+                'attr' : {'maxlength': 10}
+            })}}
+          </div> 
+           <div class="flex justify-content">
+
+            {{ form_errors(form.email)}}
+            
+
+          
+          </div> 
+
+           <div class="flex justify-content">
+            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+               {{ form_row(form.save, {
+                'label': 'Enviar'
+            })}}
+            </button>
+          </div>
+
+
+          {{ form_end(form)}}
         
 </div>
 {% endblock %}
